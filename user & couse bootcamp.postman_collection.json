@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "19ee91c8-6db1-4c94-95eb-b829b50b293a",
+		"name": "user & couse bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"dadang\",\n    \"password\":\"12345\",\n    \"role\":\"teacher\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get course by id user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ5ZjZjOWQzLTNiMjctNDAzOS05ZDBiLTU3ODljZmZkNDAxNCIsInVzZXJuYW1lIjoiZGFkYW5nIiwicm9sZSI6InRlYWNoZXIiLCJleHAiOjE2OTExNDUyMTR9.xpq7DaTuc8KbI8GZ883KB4FLdAbWHChmcgEZ88p5dW4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/course",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validate-auth",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/users/validate-auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"validate-auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create course",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ5ZjZjOWQzLTNiMjctNDAzOS05ZDBiLTU3ODljZmZkNDAxNCIsInVzZXJuYW1lIjoiZGFkYW5nIiwicm9sZSI6InRlYWNoZXIiLCJleHAiOjE2OTExNDUyMTR9.xpq7DaTuc8KbI8GZ883KB4FLdAbWHChmcgEZ88p5dW4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"Course 1\",\n    \"content\":\"Content 1\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/course",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE4NmY2NTk2LTE5NWItNDFiOC1hMGY3LWMxMTZkMDMzZDVmNSIsInVzZXJuYW1lIjoidGVhY2hlciIsImV4cCI6MTY5MTExMzc2MH0.RfsytmKPKbSElCAnj-Ac2TpYMQd93NiL0IXclR8ws8Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"endang\",\n    \"name\":\"endang dadang\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/users/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get profile by claim id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ5ZjZjOWQzLTNiMjctNDAzOS05ZDBiLTU3ODljZmZkNDAxNCIsInVzZXJuYW1lIjoiZGFkYW5nIiwicm9sZSI6InRlYWNoZXIiLCJleHAiOjE2OTExNDUyMTR9.xpq7DaTuc8KbI8GZ883KB4FLdAbWHChmcgEZ88p5dW4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE4NmY2NTk2LTE5NWItNDFiOC1hMGY3LWMxMTZkMDMzZDVmNSIsInVzZXJuYW1lIjoidGVhY2hlciIsImV4cCI6MTY5MTExMzU1MX0.rul7UzB_pJZIYQtIEkYEs59BO-7hLG6OBVnJjJLrLfU",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/v1/users/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
