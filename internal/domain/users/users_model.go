@@ -63,6 +63,7 @@ func (u *Users) UsersRequestFormat(req UserRequestFormat, id uuid.UUID) (user Us
 		Password: hashedPassword,
 		Role:     req.Role,
 	}
+	//NOTE: GA USAH
 	users := make([]Users, 0)
 	users = append(users, user)
 	return

@@ -6,6 +6,7 @@ import (
 	"github.com/evermos/boilerplate-go/shared"
 	"github.com/evermos/boilerplate-go/shared/failure"
 	"github.com/evermos/boilerplate-go/shared/jwt"
+	"github.com/evermos/boilerplate-go/shared/logger"
 	"github.com/evermos/boilerplate-go/transport/http/middleware"
 	"github.com/evermos/boilerplate-go/transport/http/response"
 	"github.com/go-chi/chi"
@@ -69,18 +70,21 @@ func (h *UsersHandler) Login(w http.ResponseWriter, r *http.Request) {
 	var requestFormat users.LoginRequestFormat
 	err := decoder.Decode(&requestFormat)
 	if err != nil {
+		logger.ErrorWithStack(err)
 		response.WithError(w, failure.BadRequest(err))
 		return
 	}
 
 	err = shared.GetValidator().Struct(requestFormat)
 	if err != nil {
+		logger.ErrorWithStack(err)
 		response.WithError(w, failure.BadRequest(err))
 		return
 	}
 
 	foo, err := h.UsersService.Login(requestFormat)
 	if err != nil {
+		logger.ErrorWithStack(err)
 		response.WithError(w, err)
 		return
 	}
@@ -95,6 +99,7 @@ func (h *UsersHandler) Profile(w http.ResponseWriter, r *http.Request) {
 	}
 	user, err := h.UsersService.ResolveByID(claims.ID)
 	if err != nil {
+		logger.ErrorWithStack(err)
 		response.WithError(w, failure.Unauthorized("Unauthorized"))
 		return
 	}
@@ -107,6 +112,7 @@ func (h *UsersHandler) UpdateProfile(w http.ResponseWriter, r *http.Request) {
 	var requestFormat users.UserRequestFormat
 	err := decoder.Decode(&requestFormat)
 	if err != nil {
+		logger.ErrorWithStack(err)
 		response.WithError(w, failure.BadRequest(err))
 		return
 	}
@@ -117,11 +123,13 @@ func (h *UsersHandler) UpdateProfile(w http.ResponseWriter, r *http.Request) {
 	}
 	claims, ok := r.Context().Value("claims").(*jwt.Claims)
 	if !ok {
+		logger.ErrorWithStack(err)
 		http.Error(w, "Error Claims", http.StatusUnauthorized)
 		return
 	}
 	user, err := h.UsersService.Update(claims.ID, requestFormat)
 	if err != nil {
+		logger.ErrorWithStack(err)
 		response.WithError(w, err)
 		return
 	}
@@ -130,8 +138,8 @@ func (h *UsersHandler) UpdateProfile(w http.ResponseWriter, r *http.Request) {
 
 func (h *UsersHandler) ValidateUsers(w http.ResponseWriter, r *http.Request) {
 	claims, ok := r.Context().Value("claims").(*jwt.Claims)
-	if !ok {
-		http.Error(w, "Error Claims", http.StatusUnauthorized)
+	if !ok || claims == nil {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
 		return
 	}
 	response.WithJSON(w, http.StatusOK, claims)
