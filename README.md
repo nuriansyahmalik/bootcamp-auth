@@ -21,6 +21,9 @@ This is an important component of your project that many new developers often ov
 Your description is an extremely important aspect of your project. A well-crafted description allows you to show off 
 your work to other developers as well as potential employers.
 
+## Revision
+  Get Profile panic
+  handle error
 
 ## System Requirement
 
