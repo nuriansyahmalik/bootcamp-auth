@@ -40,6 +40,7 @@ Provide a step-by-step description of how to get the development environment set
 
 Database ada migration di init.sql
 and test endpoint ada
+atau ada collection postman
 
 make dev || make run
 
