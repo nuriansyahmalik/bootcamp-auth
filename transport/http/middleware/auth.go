@@ -1,11 +1,10 @@
 package middleware
 
 import (
-	"net/http"
-
 	"github.com/evermos/boilerplate-go/infras"
 	"github.com/evermos/boilerplate-go/shared/oauth"
 	"github.com/evermos/boilerplate-go/transport/http/response"
+	"net/http"
 )
 
 type Authentication struct {
@@ -89,3 +88,15 @@ func (a *Authentication) Password(next http.Handler) http.Handler {
 		next.ServeHTTP(w, r)
 	})
 }
+
+//func (a *Authentication) AuthMiddleware(next http.Handler) http.Handler {
+//	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+//		tokenString := r.Header.Get("Authorization")
+//		if tokenString == "" {
+//			log.Info().Msg("no header")
+//			http.Error(w, "Unauthorization", http.StatusUnauthorized)
+//			return
+//		}
+//		claim
+//	})
+//}
