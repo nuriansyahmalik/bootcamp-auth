@@ -54,8 +54,10 @@ func (h *UsersHandler) Register(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	userID, _ := uuid.NewV4() // TODO: read from context
-
+	userID, err := uuid.NewV4()
+	if err != nil {
+		logger.ErrorWithStack(err)
+	}
 	foo, err := h.UsersService.Create(requestFormat, userID)
 	if err != nil {
 		response.WithError(w, err)
