@@ -1,4 +1,4 @@
-# PROJECT_TITLE
+# BOOTCAMP AUTH
 This is the name of the project. It describes the whole project in one sentence, and helps people understand what 
 the main goal and aim of the project is.
 
@@ -21,6 +21,9 @@ This is an important component of your project that many new developers often ov
 Your description is an extremely important aspect of your project. A well-crafted description allows you to show off 
 your work to other developers as well as potential employers.
 
+## Revision
+  Get Profile panic
+  handle error
 
 ## System Requirement
 
@@ -35,12 +38,20 @@ Provide a step-by-step description of how to get the development environment set
 
 ## Run and Test
 
-This section describe on how to run your project. Go the extra mile and write tests for your application. 
-Then provide code examples and how to run them.
+Database ada di init.sql
+make dev
+and test endpoint ada
 
-This will help show that you are certain and confident that your project will work without any challenges, 
-which will give other people confidence in it, too
+make dev || make run
 
+CREATE USER
+-POST http://localhost:8080/v1/users/ 
+LOGIN USER
+-POST http://localhost:8080/v1/users/login
+UPDATE USER
+-PUT http://localhost:8080/v1/users/profile
+GET USER
+-GET http://localhost:8080/v1/users/profile
 ## Contributing
 
 This section describe on how to contribute to this project, for example :
