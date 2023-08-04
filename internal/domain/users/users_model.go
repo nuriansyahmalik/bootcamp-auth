@@ -18,10 +18,10 @@ type Users struct {
 
 type (
 	UserRequestFormat struct {
-		Username string `json:"username"`
-		Name     string `json:"name"`
-		Password string `json:"password"`
-		Role     string `json:"role"`
+		Username string `json:"username"  validate:"required"`
+		Name     string `json:"name"  validate:"required"`
+		Password string `json:"password"  validate:"required"`
+		Role     string `json:"role"  validate:"required"`
 	}
 	LoginRequestFormat struct {
 		Username string `json:"username" binding:"required"`
