@@ -38,8 +38,7 @@ Provide a step-by-step description of how to get the development environment set
 
 ## Run and Test
 
-Database ada di init.sql
-make dev
+Database ada migration di init.sql
 and test endpoint ada
 
 make dev || make run
